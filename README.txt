@@ -1,22 +1,23 @@
-Supplier Payment App - Version 2 Polished
+Supplier Payment App V2.2 Installable Edition
 
-How to use:
-1. Open index.html in Google Chrome or Microsoft Edge.
-2. Add supplier invoices in the Add Invoice tab.
-3. Go to Invoices tab and click Record Payment when payment is made.
-4. The app automatically updates:
-   - Paid amount
-   - Outstanding amount
-   - Paid / Partial / Unpaid / Overdue status
-   - Dashboard
-   - Payment Calendar
-   - Supplier Summary
-5. Use Backup tab regularly:
-   - Export Safe Backup (.json) to save your data
-   - Import Backup (.json) to restore your data
+Upload all files in this folder to your GitHub repository root, beside index.html.
 
-Important:
-- Data is saved in the same browser/computer.
-- Export Safe Backup regularly.
-- The CSV export is for Excel viewing only.
-- Do not import CSV as backup.
+Files:
+- index.html
+- manifest.json
+- sw.js
+- favicon.png
+- favicon.ico
+- icon-192.png
+- icon-512.png
+- apple-touch-icon.png
+- README.txt
+
+After upload:
+1. Commit changes.
+2. Wait 2-3 minutes.
+3. Open your GitHub Pages link.
+4. Press Ctrl + Shift + R.
+5. In Chrome, click the three dots.
+6. Choose Install page as app / Install Supplier Payment App.
+7. Delete the old shortcut and use the new installed app.

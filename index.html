@@ -2,321 +2,34 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Supplier Payment App V2 Polished</title>
+<title>Supplier Payment App</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#166534">
 <style>
-:root{
-  --green:#166534;--green-dark:#14532d;--soft-green:#dcfce7;--bg:#f6f7f9;--card:#fff;
-  --border:#e5e7eb;--text:#1f2937;--muted:#6b7280;--danger:#991b1b;
-  --yellow:#92400e;--blue:#1d4ed8;--shadow:0 8px 24px rgba(0,0,0,.06);
-}
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text)}
-header{background:linear-gradient(135deg,var(--green-dark),var(--green));color:white;padding:24px}
-header h1{margin:0;font-size:28px}
-header p{margin:7px 0 0;opacity:.92}
-main{padding:20px;max-width:1500px;margin:auto}
-.card{background:white;border:1px solid var(--border);border-radius:16px;padding:16px;margin-bottom:16px;box-shadow:var(--shadow)}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
-.tab-btn{border:1px solid var(--border);background:white;padding:10px 14px;border-radius:999px;cursor:pointer;font-weight:700}
-.tab-btn.active{background:var(--green);color:white;border-color:var(--green)}
-.tab{display:none}.tab.active{display:block}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.metric-title{color:var(--muted);font-size:13px}.metric-value{font-size:24px;font-weight:800;margin-top:6px}
-form{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-label{font-size:13px;color:var(--muted);font-weight:700}
-input,select,textarea{width:100%;padding:10px;border:1px solid var(--border);border-radius:10px;margin-top:5px;background:white}
-textarea{resize:vertical;min-height:42px}.full{grid-column:1/-1}
-button{border:0;background:var(--green);color:white;padding:9px 12px;border-radius:10px;cursor:pointer;font-weight:700}
-button.secondary{background:white;color:var(--text);border:1px solid var(--border)}
-button.danger{background:var(--danger)}
-button.blue{background:var(--blue)}
-.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:center}
-table{width:100%;border-collapse:collapse;background:white;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
-th,td{border-bottom:1px solid var(--border);padding:10px;text-align:left;font-size:13px;vertical-align:top}
-th{background:#f3f4f6;white-space:nowrap}
-.status-paid{color:var(--green);font-weight:800}.status-partial{color:var(--yellow);font-weight:800}.status-unpaid{color:#92400e;font-weight:800}.status-overdue{color:var(--danger);font-weight:800}
-.calendar-controls{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px;flex-wrap:wrap}
-.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
-.day-name{font-weight:800;text-align:center;color:var(--muted);padding:8px}
-.date-cell{min-height:150px;background:white;border:1px solid var(--border);border-radius:14px;padding:8px;box-shadow:var(--shadow)}
-.date-num{font-weight:800;margin-bottom:6px}.muted{color:var(--muted)}
-.payment-chip{background:var(--soft-green);border-left:4px solid var(--green);padding:6px;border-radius:8px;margin:5px 0;font-size:12px}
-.payment-chip.overdue{background:#fee2e2;border-left-color:var(--danger)}
-.payment-chip.partial{background:#fef3c7;border-left-color:var(--yellow)}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.modal-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:20;align-items:center;justify-content:center;padding:20px}
-.modal{background:white;border-radius:18px;padding:18px;max-width:700px;width:100%;box-shadow:0 20px 50px rgba(0,0,0,.25);max-height:90vh;overflow:auto}
-.modal h2{margin-top:0}
-.badge{display:inline-block;padding:4px 8px;border-radius:999px;background:var(--soft-green);color:var(--green);font-size:12px;font-weight:800}
-.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.small{font-size:12px}
-.summary-note{background:#f9fafb;border:1px dashed var(--border);padding:10px;border-radius:12px}
-@media(max-width:950px){.grid,form,.two-col{grid-template-columns:1fr}.calendar{grid-template-columns:1fr}.day-name{display:none}}
-@media print{.tabs,form,.actions,button,header p,.toolbar{display:none!important}body{background:white}.tab{display:block!important;page-break-after:always}.card,table,.date-cell{box-shadow:none}}
+:root{--green:#166534;--green-dark:#14532d;--soft-green:#dcfce7;--bg:#f6f7f9;--card:#fff;--border:#e5e7eb;--text:#1f2937;--muted:#6b7280;--danger:#991b1b;--yellow:#92400e;--shadow:0 8px 24px rgba(0,0,0,.06)}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text)}header{background:linear-gradient(135deg,var(--green-dark),var(--green));color:white;padding:24px}header h1{margin:0;font-size:28px}header p{margin:7px 0 0;opacity:.92}main{padding:20px;max-width:1500px;margin:auto}.card{background:white;border:1px solid var(--border);border-radius:16px;padding:16px;margin-bottom:16px;box-shadow:var(--shadow)}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.tab-btn{border:1px solid var(--border);background:white;padding:10px 14px;border-radius:999px;cursor:pointer;font-weight:700}.tab-btn.active{background:var(--green);color:white;border-color:var(--green)}.tab{display:none}.tab.active{display:block}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.metric-title{color:var(--muted);font-size:13px}.metric-value{font-size:24px;font-weight:800;margin-top:6px}form{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}label{font-size:13px;color:var(--muted);font-weight:700}input,select,textarea{width:100%;padding:10px;border:1px solid var(--border);border-radius:10px;margin-top:5px;background:white}textarea{resize:vertical;min-height:42px}.full{grid-column:1/-1}button{border:0;background:var(--green);color:white;padding:9px 12px;border-radius:10px;cursor:pointer;font-weight:700}button.secondary{background:white;color:var(--text);border:1px solid var(--border)}button.danger{background:var(--danger)}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:center}table{width:100%;border-collapse:collapse;background:white;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}th,td{border-bottom:1px solid var(--border);padding:10px;text-align:left;font-size:13px;vertical-align:top}th{background:#f3f4f6;white-space:nowrap}.status-paid{color:var(--green);font-weight:800}.status-partial{color:var(--yellow);font-weight:800}.status-unpaid{color:#92400e;font-weight:800}.status-overdue{color:var(--danger);font-weight:800}.calendar-controls{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px;flex-wrap:wrap}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}.day-name{font-weight:800;text-align:center;color:var(--muted);padding:8px}.date-cell{min-height:150px;background:white;border:1px solid var(--border);border-radius:14px;padding:8px;box-shadow:var(--shadow)}.date-num{font-weight:800;margin-bottom:6px}.muted{color:var(--muted)}.payment-chip{background:var(--soft-green);border-left:4px solid var(--green);padding:6px;border-radius:8px;margin:5px 0;font-size:12px}.payment-chip.overdue{background:#fee2e2;border-left-color:var(--danger)}.payment-chip.partial{background:#fef3c7;border-left-color:var(--yellow)}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}.modal-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:20;align-items:center;justify-content:center;padding:20px}.modal{background:white;border-radius:18px;padding:18px;max-width:700px;width:100%;box-shadow:0 20px 50px rgba(0,0,0,.25);max-height:90vh;overflow:auto}.badge{display:inline-block;padding:4px 8px;border-radius:999px;background:var(--soft-green);color:var(--green);font-size:12px;font-weight:800}.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.small{font-size:12px}.summary-note{background:#f9fafb;border:1px dashed var(--border);padding:10px;border-radius:12px}@media(max-width:950px){.grid,form,.two-col{grid-template-columns:1fr}.calendar{grid-template-columns:1fr}.day-name{display:none}}
 </style>
 </head>
 <body>
-<header>
-<h1>Supplier Payment App</h1>
-<p>Invoice entry, payment recording, outstanding tracking, due date calendar, and supplier summaries</p>
-</header>
-
+<header><h1>Supplier Payment App</h1><p>Invoice entry, payment recording, outstanding tracking, due date calendar, and supplier summaries</p></header>
 <main>
-<div class="tabs">
-<button class="tab-btn active" onclick="showTab('dashboard',this)">Dashboard</button>
-<button class="tab-btn" onclick="showTab('invoiceEntry',this)">Add Invoice</button>
-<button class="tab-btn" onclick="showTab('invoices',this)">Invoices</button>
-<button class="tab-btn" onclick="showTab('paymentHistory',this)">Payment History</button>
-<button class="tab-btn" onclick="showTab('calendarTab',this)">Payment Calendar</button>
-<button class="tab-btn" onclick="showTab('summary',this)">Supplier Summary</button>
-<button class="tab-btn" onclick="showTab('backup',this)">Backup</button>
-</div>
-
-<section id="dashboard" class="tab active">
-<div class="grid">
-<div class="card"><div class="metric-title">Total Invoice Amount</div><div id="mTotalInvoice" class="metric-value">RM0.00</div></div>
-<div class="card"><div class="metric-title">Total Paid</div><div id="mTotalPaid" class="metric-value">RM0.00</div></div>
-<div class="card"><div class="metric-title">Total Outstanding</div><div id="mOutstanding" class="metric-value">RM0.00</div></div>
-<div class="card"><div class="metric-title">Overdue Amount</div><div id="mOverdue" class="metric-value">RM0.00</div></div>
-</div>
-<div class="two-col">
-<div class="card"><h3>Due Today</h3><div id="dueToday"></div></div>
-<div class="card"><h3>Upcoming 7 Days</h3><div id="upcoming"></div></div>
-</div>
-<div class="card">
-<h3>Quick View</h3>
-<div id="quickView"></div>
-</div>
-</section>
-
-<section id="invoiceEntry" class="tab">
-<div class="card">
-<h2>Add / Update Supplier Invoice</h2>
-<p class="muted">Step 1: Enter supplier invoice here. Step 2: Record payment from the Invoices tab.</p>
-<form id="invoiceForm">
-<input type="hidden" id="invoiceId">
-<div><label>Supplier Name</label><input id="supplier" required placeholder="Example: ABC Trading"></div>
-<div><label>Invoice No</label><input id="invoiceNo" required placeholder="Example: INV-001"></div>
-<div><label>Invoice Date</label><input id="invoiceDate" type="date" required></div>
-<div><label>Payment Due Date</label><input id="dueDate" type="date" required></div>
-<div><label>Invoice Amount (RM)</label><input id="amount" type="number" min="0" step="0.01" required></div>
-<div><label>Category</label><select id="category"><option>General</option><option>Vegetables</option><option>Fruits</option><option>Chicken/Meat</option><option>Seafood</option><option>Groceries</option><option>Dry Goods</option><option>Utilities</option><option>Other</option></select></div>
-<div class="full"><label>Remarks</label><textarea id="remarks" placeholder="Optional notes"></textarea></div>
-</form>
-<div class="actions">
-<button onclick="saveInvoice()">Save Invoice</button>
-<button class="secondary" onclick="resetInvoiceForm()">Clear Form</button>
-</div>
-</div>
-</section>
-
-<section id="invoices" class="tab">
-<div class="card">
-<h2>Invoices & Outstanding</h2>
-<div class="toolbar">
-<input id="invoiceSearch" placeholder="Search supplier / invoice" oninput="renderAll()" style="max-width:300px">
-<select id="statusFilter" onchange="renderAll()" style="max-width:180px">
-<option value="All">All Status</option>
-<option value="Unpaid">Unpaid</option>
-<option value="Partial">Partial</option>
-<option value="Paid">Paid</option>
-<option value="Overdue">Overdue</option>
-</select>
-<select id="monthFilter" onchange="renderAll()" style="max-width:200px">
-<option value="All">All Due Months</option>
-</select>
-<button class="secondary" onclick="window.print()">Print</button>
-</div>
-</div>
-<div id="invoiceTable"></div>
-</section>
-
-<section id="paymentHistory" class="tab">
-<div class="card">
-<h2>Payment History</h2>
-<div class="toolbar">
-<input id="paymentSearch" placeholder="Search supplier / invoice / reference" oninput="renderAll()" style="max-width:330px">
-<button class="secondary" onclick="window.print()">Print</button>
-</div>
-</div>
-<div id="paymentsTable"></div>
-</section>
-
-<section id="calendarTab" class="tab">
-<div class="calendar-controls">
-<button class="secondary" onclick="changeMonth(-1)">Previous Month</button>
-<h2 id="calendarTitle"></h2>
-<button class="secondary" onclick="changeMonth(1)">Next Month</button>
-</div>
-<div class="calendar" id="calendar"></div>
-</section>
-
-<section id="summary" class="tab">
-<div class="card">
-<h2>Supplier Summary</h2>
-<p class="muted">Auto groups total invoice, paid amount, outstanding and overdue by supplier.</p>
-</div>
-<div id="summaryTable"></div>
-</section>
-
-<section id="backup" class="tab">
-<div class="card">
-<h2>Backup & Restore</h2>
-<p class="summary-note"><b>Important:</b> This app saves data in the same browser. Export backup regularly so your data is safe.</p>
-<div class="actions">
-<button onclick="exportData()">Export Safe Backup (.json)</button>
-<button class="secondary" onclick="document.getElementById('importFile').click()">Import Backup (.json)</button>
-<input id="importFile" type="file" accept=".json" style="display:none" onchange="importData(event)">
-<button class="secondary" onclick="exportCSV()">Export Invoices CSV</button>
-</div>
-<p class="muted small">Do not edit the JSON backup file manually. Use CSV export only for viewing in Excel.</p>
-</div>
-</section>
+<div class="tabs"><button class="tab-btn active" onclick="showTab('dashboard',this)">Dashboard</button><button class="tab-btn" onclick="showTab('invoiceEntry',this)">Add Invoice</button><button class="tab-btn" onclick="showTab('invoices',this)">Invoices</button><button class="tab-btn" onclick="showTab('paymentHistory',this)">Payment History</button><button class="tab-btn" onclick="showTab('calendarTab',this)">Payment Calendar</button><button class="tab-btn" onclick="showTab('summary',this)">Supplier Summary</button><button class="tab-btn" onclick="showTab('backup',this)">Backup</button></div>
+<section id="dashboard" class="tab active"><div class="grid"><div class="card"><div class="metric-title">Total Invoice Amount</div><div id="mTotalInvoice" class="metric-value">RM0.00</div></div><div class="card"><div class="metric-title">Total Paid</div><div id="mTotalPaid" class="metric-value">RM0.00</div></div><div class="card"><div class="metric-title">Total Outstanding</div><div id="mOutstanding" class="metric-value">RM0.00</div></div><div class="card"><div class="metric-title">Overdue Amount</div><div id="mOverdue" class="metric-value">RM0.00</div></div></div><div class="two-col"><div class="card"><h3>Due Today</h3><div id="dueToday"></div></div><div class="card"><h3>Upcoming 7 Days</h3><div id="upcoming"></div></div></div><div class="card"><h3>Quick View</h3><div id="quickView"></div></div></section>
+<section id="invoiceEntry" class="tab"><div class="card"><h2>Add / Update Supplier Invoice</h2><form id="invoiceForm"><input type="hidden" id="invoiceId"><div><label>Supplier Name</label><input id="supplier" required placeholder="Example: ABC Trading"></div><div><label>Invoice No</label><input id="invoiceNo" required placeholder="Example: INV-001"></div><div><label>Invoice Date</label><input id="invoiceDate" type="date" required></div><div><label>Payment Due Date</label><input id="dueDate" type="date" required></div><div><label>Invoice Amount (RM)</label><input id="amount" type="number" min="0" step="0.01" required></div><div><label>Category</label><select id="category"><option>General</option><option>Vegetables</option><option>Fruits</option><option>Chicken/Meat</option><option>Seafood</option><option>Groceries</option><option>Dry Goods</option><option>Utilities</option><option>Other</option></select></div><div class="full"><label>Remarks</label><textarea id="remarks" placeholder="Optional notes"></textarea></div></form><div class="actions"><button onclick="saveInvoice()">Save Invoice</button><button class="secondary" onclick="resetInvoiceForm()">Clear Form</button></div></div></section>
+<section id="invoices" class="tab"><div class="card"><h2>Invoices & Outstanding</h2><div class="toolbar"><input id="invoiceSearch" placeholder="Search supplier / invoice" oninput="renderAll()" style="max-width:300px"><select id="statusFilter" onchange="renderAll()" style="max-width:180px"><option value="All">All Status</option><option value="Unpaid">Unpaid</option><option value="Partial">Partial</option><option value="Paid">Paid</option><option value="Overdue">Overdue</option></select><select id="monthFilter" onchange="renderAll()" style="max-width:200px"><option value="All">All Due Months</option></select></div></div><div id="invoiceTable"></div></section>
+<section id="paymentHistory" class="tab"><div class="card"><h2>Payment History</h2><div class="toolbar"><input id="paymentSearch" placeholder="Search supplier / invoice / reference" oninput="renderAll()" style="max-width:330px"></div></div><div id="paymentsTable"></div></section>
+<section id="calendarTab" class="tab"><div class="calendar-controls"><button class="secondary" onclick="changeMonth(-1)">Previous Month</button><h2 id="calendarTitle"></h2><button class="secondary" onclick="changeMonth(1)">Next Month</button></div><div class="calendar" id="calendar"></div></section>
+<section id="summary" class="tab"><div class="card"><h2>Supplier Summary</h2><p class="muted">Auto groups total invoice, paid amount, outstanding and overdue by supplier.</p></div><div id="summaryTable"></div></section>
+<section id="backup" class="tab"><div class="card"><h2>Backup & Restore</h2><p class="summary-note"><b>Important:</b> This app saves data in the same browser. Export backup regularly so your data is safe.</p><div class="actions"><button onclick="exportData()">Export Safe Backup (.json)</button><button class="secondary" onclick="document.getElementById('importFile').click()">Import Backup (.json)</button><input id="importFile" type="file" accept=".json" style="display:none" onchange="importData(event)"><button class="secondary" onclick="exportCSV()">Export Invoices CSV</button></div><p class="muted small">Do not edit the JSON backup file manually. Use CSV export only for viewing in Excel.</p></div></section>
 </main>
-
-<div id="paymentModal" class="modal-backdrop">
-<div class="modal">
-<h2>Record Payment</h2>
-<div id="paymentInvoiceInfo" class="card"></div>
-<form id="paymentForm">
-<input type="hidden" id="payInvoiceId">
-<div><label>Payment Date</label><input id="payDate" type="date" required></div>
-<div><label>Payment Amount (RM)</label><input id="payAmount" type="number" min="0" step="0.01" required></div>
-<div><label>Payment Method</label><select id="payMethod"><option>Bank Transfer</option><option>Cash</option><option>Cheque</option><option>DuitNow</option><option>Other</option></select></div>
-<div><label>Reference No</label><input id="payRef" placeholder="Bank ref / cheque no"></div>
-<div class="full"><label>Remarks</label><textarea id="payRemarks" placeholder="Optional notes"></textarea></div>
-</form>
-<div class="actions">
-<button onclick="savePayment()">Save Payment</button>
-<button class="secondary" onclick="closePaymentModal()">Cancel</button>
-</div>
-</div>
-</div>
-
+<div id="paymentModal" class="modal-backdrop"><div class="modal"><h2>Record Payment</h2><div id="paymentInvoiceInfo" class="card"></div><form id="paymentForm"><input type="hidden" id="payInvoiceId"><div><label>Payment Date</label><input id="payDate" type="date" required></div><div><label>Payment Amount (RM)</label><input id="payAmount" type="number" min="0" step="0.01" required></div><div><label>Payment Method</label><select id="payMethod"><option>Bank Transfer</option><option>Cash</option><option>Cheque</option><option>DuitNow</option><option>Other</option></select></div><div><label>Reference No</label><input id="payRef" placeholder="Bank ref / cheque no"></div><div class="full"><label>Remarks</label><textarea id="payRemarks" placeholder="Optional notes"></textarea></div></form><div class="actions"><button onclick="savePayment()">Save Payment</button><button class="secondary" onclick="closePaymentModal()">Cancel</button></div></div></div>
 <script>
-const STORAGE_KEY="supplierPaymentAppV2Polished";
-let data=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{"invoices":[],"payments":[]}');
-let viewMonth=new Date().getMonth();
-let viewYear=new Date().getFullYear();
-
-function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(data))}
-function money(n){return "RM"+Number(n||0).toLocaleString("en-MY",{minimumFractionDigits:2,maximumFractionDigits:2})}
-function todayISO(){const d=new Date();const o=d.getTimezoneOffset()*60000;return new Date(d-o).toISOString().slice(0,10)}
-function formatDate(d){if(!d)return "";return new Date(d+"T00:00:00").toLocaleDateString("en-MY",{day:"2-digit",month:"2-digit",year:"numeric"})}
-function monthKey(d){return d ? d.slice(0,7) : ""}
-function monthLabel(key){if(!key)return "";const [y,m]=key.split("-");return new Date(Number(y),Number(m)-1,1).toLocaleDateString("en-MY",{month:"long",year:"numeric"})}
-function paidForInvoice(id){return data.payments.filter(p=>p.invoiceId===id).reduce((s,p)=>s+Number(p.amount||0),0)}
-function outstanding(inv){return Math.max(Number(inv.amount||0)-paidForInvoice(inv.id),0)}
-function status(inv){const bal=outstanding(inv), paid=paidForInvoice(inv.id); if(bal<=0) return "Paid"; if(paid>0) return "Partial"; return "Unpaid"}
-function isOverdue(inv){return status(inv)!=="Paid" && inv.dueDate<todayISO()}
-function statusLabel(inv){return isOverdue(inv) ? "Overdue" : status(inv)}
-function statusClass(inv){const s=status(inv); if(isOverdue(inv)) return "status-overdue"; if(s==="Paid") return "status-paid"; if(s==="Partial") return "status-partial"; return "status-unpaid"}
-
-function showTab(id,btn){
- document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
- document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
- document.getElementById(id).classList.add("active");
- btn.classList.add("active");
- renderAll();
-}
-function showTabById(id){
- const map={dashboard:0,invoiceEntry:1,invoices:2,paymentHistory:3,calendarTab:4,summary:5,backup:6};
- document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
- document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
- document.getElementById(id).classList.add("active");
- document.querySelectorAll(".tab-btn")[map[id]].classList.add("active");
-}
-
-function saveInvoice(){
- const inv={id:document.getElementById("invoiceId").value||String(Date.now()),supplier:document.getElementById("supplier").value.trim(),invoiceNo:document.getElementById("invoiceNo").value.trim(),invoiceDate:document.getElementById("invoiceDate").value,dueDate:document.getElementById("dueDate").value,amount:Number(document.getElementById("amount").value||0),category:document.getElementById("category").value,remarks:document.getElementById("remarks").value.trim()};
- if(!inv.supplier||!inv.invoiceNo||!inv.invoiceDate||!inv.dueDate||!inv.amount){alert("Please fill supplier, invoice no, invoice date, due date and amount.");return}
- const duplicate=data.invoices.find(x=>x.id!==inv.id && x.supplier.toLowerCase()===inv.supplier.toLowerCase() && x.invoiceNo.toLowerCase()===inv.invoiceNo.toLowerCase());
- if(duplicate && !confirm("Same supplier and invoice no already exists. Continue saving?")) return;
- const i=data.invoices.findIndex(x=>x.id===inv.id); if(i>=0)data.invoices[i]=inv; else data.invoices.push(inv);
- save();resetInvoiceForm();renderAll();alert("Invoice saved.");
-}
-function resetInvoiceForm(){document.getElementById("invoiceForm").reset();document.getElementById("invoiceId").value=""}
-function editInvoice(id){const inv=data.invoices.find(x=>x.id===id); if(!inv)return;document.getElementById("invoiceId").value=inv.id;document.getElementById("supplier").value=inv.supplier;document.getElementById("invoiceNo").value=inv.invoiceNo;document.getElementById("invoiceDate").value=inv.invoiceDate;document.getElementById("dueDate").value=inv.dueDate;document.getElementById("amount").value=inv.amount;document.getElementById("category").value=inv.category||"General";document.getElementById("remarks").value=inv.remarks||"";showTabById("invoiceEntry")}
-function deleteInvoice(id){if(!confirm("Delete this invoice and its payment history?"))return;data.invoices=data.invoices.filter(x=>x.id!==id);data.payments=data.payments.filter(p=>p.invoiceId!==id);save();renderAll()}
-
-function openPaymentModal(id){const inv=data.invoices.find(x=>x.id===id);if(!inv)return;document.getElementById("payInvoiceId").value=id;document.getElementById("payDate").value=todayISO();document.getElementById("payAmount").value=outstanding(inv).toFixed(2);document.getElementById("payRef").value="";document.getElementById("payRemarks").value="";document.getElementById("paymentInvoiceInfo").innerHTML=`<b>${inv.supplier}</b><br>Invoice: ${inv.invoiceNo}<br>Invoice Amount: ${money(inv.amount)}<br>Paid: ${money(paidForInvoice(inv.id))}<br><b>Outstanding: ${money(outstanding(inv))}</b>`;document.getElementById("paymentModal").style.display="flex"}
-function closePaymentModal(){document.getElementById("paymentModal").style.display="none"}
-function savePayment(){const invoiceId=document.getElementById("payInvoiceId").value;const inv=data.invoices.find(x=>x.id===invoiceId);if(!inv)return;const amount=Number(document.getElementById("payAmount").value||0);if(!document.getElementById("payDate").value||amount<=0){alert("Please key in payment date and valid amount.");return}if(amount>outstanding(inv)+0.001){if(!confirm("Payment amount is more than outstanding. Continue?"))return}data.payments.push({id:String(Date.now()),invoiceId,supplier:inv.supplier,invoiceNo:inv.invoiceNo,date:document.getElementById("payDate").value,amount,method:document.getElementById("payMethod").value,ref:document.getElementById("payRef").value.trim(),remarks:document.getElementById("payRemarks").value.trim()});save();closePaymentModal();renderAll();alert("Payment recorded.")}
-function deletePayment(id){if(!confirm("Delete this payment record?"))return;data.payments=data.payments.filter(p=>p.id!==id);save();renderAll()}
-
-function renderDashboard(){
- const totalInv=data.invoices.reduce((s,i)=>s+Number(i.amount||0),0),totalPaid=data.payments.reduce((s,p)=>s+Number(p.amount||0),0),totalOut=data.invoices.reduce((s,i)=>s+outstanding(i),0),overdue=data.invoices.filter(isOverdue).reduce((s,i)=>s+outstanding(i),0);
- document.getElementById("mTotalInvoice").textContent=money(totalInv);document.getElementById("mTotalPaid").textContent=money(totalPaid);document.getElementById("mOutstanding").textContent=money(totalOut);document.getElementById("mOverdue").textContent=money(overdue);
- const today=todayISO();document.getElementById("dueToday").innerHTML=listMini(data.invoices.filter(i=>i.dueDate===today&&status(i)!=="Paid"));
- const next=new Date(today+"T00:00:00");next.setDate(next.getDate()+7);const nextISO=next.toISOString().slice(0,10);
- document.getElementById("upcoming").innerHTML=listMini(data.invoices.filter(i=>i.dueDate>today&&i.dueDate<=nextISO&&status(i)!=="Paid").sort((a,b)=>a.dueDate.localeCompare(b.dueDate)),true);
- const unpaid=data.invoices.filter(i=>status(i)==="Unpaid").length, partial=data.invoices.filter(i=>status(i)==="Partial").length, paid=data.invoices.filter(i=>status(i)==="Paid").length, overdueCount=data.invoices.filter(isOverdue).length;
- document.getElementById("quickView").innerHTML=`<span class="badge">${unpaid} Unpaid</span> <span class="badge">${partial} Partial</span> <span class="badge">${paid} Paid</span> <span class="badge">${overdueCount} Overdue</span>`;
-}
-function listMini(list,showDate=false){if(!list.length)return'<p class="muted">No payments found.</p>';return list.map(i=>`<div class="payment-chip ${isOverdue(i)?"overdue":status(i)==="Partial"?"partial":""}"><b>${showDate?formatDate(i.dueDate)+" — ":""}${i.supplier}</b><br>${i.invoiceNo} | Outstanding: <b>${money(outstanding(i))}</b></div>`).join("")}
-
-function updateMonthFilter(){
- const select=document.getElementById("monthFilter");const current=select.value||"All";
- const months=[...new Set(data.invoices.map(i=>monthKey(i.dueDate)).filter(Boolean))].sort();
- select.innerHTML='<option value="All">All Due Months</option>'+months.map(m=>`<option value="${m}">${monthLabel(m)}</option>`).join("");
- select.value=months.includes(current)?current:"All";
-}
-function renderInvoices(){
- updateMonthFilter();
- const q=(document.getElementById("invoiceSearch")?.value||"").toLowerCase(), f=document.getElementById("statusFilter")?.value||"All", mf=document.getElementById("monthFilter")?.value||"All";
- let rows=data.invoices.filter(i=>i.supplier.toLowerCase().includes(q)||i.invoiceNo.toLowerCase().includes(q));
- if(f!=="All")rows=rows.filter(i=>f==="Overdue"?isOverdue(i):status(i)===f);
- if(mf!=="All")rows=rows.filter(i=>monthKey(i.dueDate)===mf);
- rows.sort((a,b)=>a.dueDate.localeCompare(b.dueDate)||a.supplier.localeCompare(b.supplier));
- let html='<table><thead><tr><th>Due Date</th><th>Supplier</th><th>Invoice No</th><th>Invoice Date</th><th>Category</th><th>Invoice Amount</th><th>Paid</th><th>Outstanding</th><th>Status</th><th>Action</th></tr></thead><tbody>';
- if(!rows.length)html+='<tr><td colspan="10" class="muted">No invoices found.</td></tr>';
- rows.forEach(i=>{html+=`<tr><td>${formatDate(i.dueDate)}</td><td>${i.supplier}</td><td>${i.invoiceNo}</td><td>${formatDate(i.invoiceDate)}</td><td>${i.category||"-"}</td><td>${money(i.amount)}</td><td>${money(paidForInvoice(i.id))}</td><td><b>${money(outstanding(i))}</b></td><td class="${statusClass(i)}">${statusLabel(i)}</td><td><button onclick="openPaymentModal('${i.id}')">Record Payment</button> <button class="secondary" onclick="editInvoice('${i.id}')">Edit</button> <button class="danger" onclick="deleteInvoice('${i.id}')">Delete</button></td></tr>`});
- html+='</tbody></table>';document.getElementById("invoiceTable").innerHTML=html;
-}
-function renderPayments(){
- const q=(document.getElementById("paymentSearch")?.value||"").toLowerCase();
- let rows=[...data.payments].filter(p=>p.supplier.toLowerCase().includes(q)||p.invoiceNo.toLowerCase().includes(q)||(p.ref||"").toLowerCase().includes(q)).sort((a,b)=>b.date.localeCompare(a.date));
- let html='<table><thead><tr><th>Payment Date</th><th>Supplier</th><th>Invoice No</th><th>Amount Paid</th><th>Method</th><th>Reference</th><th>Remarks</th><th>Action</th></tr></thead><tbody>';
- if(!rows.length)html+='<tr><td colspan="8" class="muted">No payments recorded yet.</td></tr>';
- rows.forEach(p=>html+=`<tr><td>${formatDate(p.date)}</td><td>${p.supplier}</td><td>${p.invoiceNo}</td><td>${money(p.amount)}</td><td>${p.method}</td><td>${p.ref||"-"}</td><td>${p.remarks||"-"}</td><td><button class="danger" onclick="deletePayment('${p.id}')">Delete</button></td></tr>`);
- html+='</tbody></table>';document.getElementById("paymentsTable").innerHTML=html;
-}
-function changeMonth(delta){viewMonth+=delta;if(viewMonth<0){viewMonth=11;viewYear--}if(viewMonth>11){viewMonth=0;viewYear++}renderCalendar()}
-function renderCalendar(){
- const cal=document.getElementById("calendar");document.getElementById("calendarTitle").textContent=new Date(viewYear,viewMonth,1).toLocaleDateString("en-MY",{month:"long",year:"numeric"});
- const names=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];cal.innerHTML=names.map(d=>`<div class="day-name">${d}</div>`).join("");
- const first=new Date(viewYear,viewMonth,1).getDay(),days=new Date(viewYear,viewMonth+1,0).getDate();for(let i=0;i<first;i++)cal.innerHTML+="<div></div>";
- for(let day=1;day<=days;day++){const iso=`${viewYear}-${String(viewMonth+1).padStart(2,"0")}-${String(day).padStart(2,"0")}`;const invs=data.invoices.filter(i=>i.dueDate===iso&&status(i)!=="Paid");const total=invs.reduce((s,i)=>s+outstanding(i),0);let chips=invs.map(i=>`<div class="payment-chip ${isOverdue(i)?"overdue":status(i)==="Partial"?"partial":""}"><b>${i.supplier}</b><br>${i.invoiceNo}<br>${money(outstanding(i))}</div>`).join("");if(invs.length)chips=`<div class="muted"><b>Total: ${money(total)}</b></div>`+chips;cal.innerHTML+=`<div class="date-cell"><div class="date-num">${day}</div>${chips}</div>`}
-}
-function renderSummary(){
- const map={};data.invoices.forEach(i=>{if(!map[i.supplier])map[i.supplier]={supplier:i.supplier,invoice:0,paid:0,out:0,overdue:0,count:0};map[i.supplier].invoice+=Number(i.amount||0);map[i.supplier].paid+=paidForInvoice(i.id);map[i.supplier].out+=outstanding(i);if(isOverdue(i))map[i.supplier].overdue+=outstanding(i);map[i.supplier].count++});
- const rows=Object.values(map).sort((a,b)=>b.out-a.out);let html='<table><thead><tr><th>Supplier</th><th>No. of Invoices</th><th>Total Invoice</th><th>Total Paid</th><th>Total Outstanding</th><th>Overdue</th></tr></thead><tbody>';
- if(!rows.length)html+='<tr><td colspan="6" class="muted">No data yet.</td></tr>';rows.forEach(r=>html+=`<tr><td>${r.supplier}</td><td>${r.count}</td><td>${money(r.invoice)}</td><td>${money(r.paid)}</td><td><b>${money(r.out)}</b></td><td>${money(r.overdue)}</td></tr>`);html+='</tbody></table>';document.getElementById("summaryTable").innerHTML=html;
-}
-function exportData(){
- const backup={app:"Supplier Payment App",version:"2-polished",exportedAt:new Date().toISOString(),data};
- const blob=new Blob([JSON.stringify(backup,null,2)],{type:"application/json"});
- const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="supplier_payment_app_backup.json";a.click();
-}
-function importData(event){
- const file=event.target.files[0];if(!file)return;const reader=new FileReader();
- reader.onload=e=>{try{const imported=JSON.parse(e.target.result);let newData=imported.data||imported;if(!newData.invoices||!newData.payments)throw new Error("Invalid file");if(!confirm("This will replace current data in this browser. Continue?"))return;data={invoices:newData.invoices,payments:newData.payments};save();renderAll();alert("Backup imported successfully.");}catch(err){alert("This backup file is not valid. Please import the JSON backup exported from this app.");}};
- reader.readAsText(file);event.target.value="";
-}
-function exportCSV(){
- const headers=["Due Date","Supplier","Invoice No","Invoice Date","Category","Invoice Amount","Paid","Outstanding","Status","Remarks"];
- const rows=data.invoices.map(i=>[formatDate(i.dueDate),i.supplier,i.invoiceNo,formatDate(i.invoiceDate),i.category||"",i.amount,paidForInvoice(i.id),outstanding(i),statusLabel(i),i.remarks||""]);
- const csv=[headers,...rows].map(row=>row.map(v=>`"${String(v??"").replaceAll('"','""')}"`).join(",")).join("\n");
- const blob=new Blob([csv],{type:"text/csv;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="supplier_payment_invoices.csv";a.click();
-}
-function renderAll(){renderDashboard();renderInvoices();renderPayments();renderCalendar();renderSummary()}
-renderAll();
+const STORAGE_KEY="supplierPaymentAppV22";let data=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{"invoices":[],"payments":[]}');let viewMonth=new Date().getMonth();let viewYear=new Date().getFullYear();function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(data))}function money(n){return "RM"+Number(n||0).toLocaleString("en-MY",{minimumFractionDigits:2,maximumFractionDigits:2})}function todayISO(){const d=new Date();const o=d.getTimezoneOffset()*60000;return new Date(d-o).toISOString().slice(0,10)}function formatDate(d){if(!d)return "";return new Date(d+"T00:00:00").toLocaleDateString("en-MY",{day:"2-digit",month:"2-digit",year:"numeric"})}function monthKey(d){return d?d.slice(0,7):""}function monthLabel(key){if(!key)return "";const[y,m]=key.split("-");return new Date(Number(y),Number(m)-1,1).toLocaleDateString("en-MY",{month:"long",year:"numeric"})}function paidForInvoice(id){return data.payments.filter(p=>p.invoiceId===id).reduce((s,p)=>s+Number(p.amount||0),0)}function outstanding(inv){return Math.max(Number(inv.amount||0)-paidForInvoice(inv.id),0)}function status(inv){const bal=outstanding(inv),paid=paidForInvoice(inv.id);if(bal<=0)return"Paid";if(paid>0)return"Partial";return"Unpaid"}function isOverdue(inv){return status(inv)!=="Paid"&&inv.dueDate<todayISO()}function statusLabel(inv){return isOverdue(inv)?"Overdue":status(inv)}function statusClass(inv){const s=status(inv);if(isOverdue(inv))return"status-overdue";if(s==="Paid")return"status-paid";if(s==="Partial")return"status-partial";return"status-unpaid"}function showTab(id,btn){document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));document.getElementById(id).classList.add("active");btn.classList.add("active");renderAll()}function showTabById(id){const map={dashboard:0,invoiceEntry:1,invoices:2,paymentHistory:3,calendarTab:4,summary:5,backup:6};document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));document.getElementById(id).classList.add("active");document.querySelectorAll(".tab-btn")[map[id]].classList.add("active")}function saveInvoice(){const inv={id:document.getElementById("invoiceId").value||String(Date.now()),supplier:document.getElementById("supplier").value.trim(),invoiceNo:document.getElementById("invoiceNo").value.trim(),invoiceDate:document.getElementById("invoiceDate").value,dueDate:document.getElementById("dueDate").value,amount:Number(document.getElementById("amount").value||0),category:document.getElementById("category").value,remarks:document.getElementById("remarks").value.trim()};if(!inv.supplier||!inv.invoiceNo||!inv.invoiceDate||!inv.dueDate||!inv.amount){alert("Please fill supplier, invoice no, invoice date, due date and amount.");return}const i=data.invoices.findIndex(x=>x.id===inv.id);if(i>=0)data.invoices[i]=inv;else data.invoices.push(inv);save();resetInvoiceForm();renderAll();alert("Invoice saved.")}function resetInvoiceForm(){document.getElementById("invoiceForm").reset();document.getElementById("invoiceId").value=""}function editInvoice(id){const inv=data.invoices.find(x=>x.id===id);if(!inv)return;document.getElementById("invoiceId").value=inv.id;document.getElementById("supplier").value=inv.supplier;document.getElementById("invoiceNo").value=inv.invoiceNo;document.getElementById("invoiceDate").value=inv.invoiceDate;document.getElementById("dueDate").value=inv.dueDate;document.getElementById("amount").value=inv.amount;document.getElementById("category").value=inv.category||"General";document.getElementById("remarks").value=inv.remarks||"";showTabById("invoiceEntry")}function deleteInvoice(id){if(!confirm("Delete this invoice and its payment history?"))return;data.invoices=data.invoices.filter(x=>x.id!==id);data.payments=data.payments.filter(p=>p.invoiceId!==id);save();renderAll()}function openPaymentModal(id){const inv=data.invoices.find(x=>x.id===id);if(!inv)return;document.getElementById("payInvoiceId").value=id;document.getElementById("payDate").value=todayISO();document.getElementById("payAmount").value=outstanding(inv).toFixed(2);document.getElementById("payRef").value="";document.getElementById("payRemarks").value="";document.getElementById("paymentInvoiceInfo").innerHTML=`<b>${inv.supplier}</b><br>Invoice: ${inv.invoiceNo}<br>Invoice Amount: ${money(inv.amount)}<br>Paid: ${money(paidForInvoice(inv.id))}<br><b>Outstanding: ${money(outstanding(inv))}</b>`;document.getElementById("paymentModal").style.display="flex"}function closePaymentModal(){document.getElementById("paymentModal").style.display="none"}function savePayment(){const invoiceId=document.getElementById("payInvoiceId").value;const inv=data.invoices.find(x=>x.id===invoiceId);if(!inv)return;const amount=Number(document.getElementById("payAmount").value||0);if(!document.getElementById("payDate").value||amount<=0){alert("Please key in payment date and valid amount.");return}if(amount>outstanding(inv)+.001){if(!confirm("Payment amount is more than outstanding. Continue?"))return}data.payments.push({id:String(Date.now()),invoiceId,supplier:inv.supplier,invoiceNo:inv.invoiceNo,date:document.getElementById("payDate").value,amount,method:document.getElementById("payMethod").value,ref:document.getElementById("payRef").value.trim(),remarks:document.getElementById("payRemarks").value.trim()});save();closePaymentModal();renderAll();alert("Payment recorded.")}function deletePayment(id){if(!confirm("Delete this payment record?"))return;data.payments=data.payments.filter(p=>p.id!==id);save();renderAll()}function renderDashboard(){const totalInv=data.invoices.reduce((s,i)=>s+Number(i.amount||0),0),totalPaid=data.payments.reduce((s,p)=>s+Number(p.amount||0),0),totalOut=data.invoices.reduce((s,i)=>s+outstanding(i),0),overdue=data.invoices.filter(isOverdue).reduce((s,i)=>s+outstanding(i),0);document.getElementById("mTotalInvoice").textContent=money(totalInv);document.getElementById("mTotalPaid").textContent=money(totalPaid);document.getElementById("mOutstanding").textContent=money(totalOut);document.getElementById("mOverdue").textContent=money(overdue);const today=todayISO();document.getElementById("dueToday").innerHTML=listMini(data.invoices.filter(i=>i.dueDate===today&&status(i)!=="Paid"));const next=new Date(today+"T00:00:00");next.setDate(next.getDate()+7);const nextISO=next.toISOString().slice(0,10);document.getElementById("upcoming").innerHTML=listMini(data.invoices.filter(i=>i.dueDate>today&&i.dueDate<=nextISO&&status(i)!=="Paid").sort((a,b)=>a.dueDate.localeCompare(b.dueDate)),true);const unpaid=data.invoices.filter(i=>status(i)==="Unpaid").length,partial=data.invoices.filter(i=>status(i)==="Partial").length,paid=data.invoices.filter(i=>status(i)==="Paid").length,overdueCount=data.invoices.filter(isOverdue).length;document.getElementById("quickView").innerHTML=`<span class="badge">${unpaid} Unpaid</span> <span class="badge">${partial} Partial</span> <span class="badge">${paid} Paid</span> <span class="badge">${overdueCount} Overdue</span>`}function listMini(list,showDate=false){if(!list.length)return'<p class="muted">No payments found.</p>';return list.map(i=>`<div class="payment-chip ${isOverdue(i)?"overdue":status(i)==="Partial"?"partial":""}"><b>${showDate?formatDate(i.dueDate)+" — ":""}${i.supplier}</b><br>${i.invoiceNo} | Outstanding: <b>${money(outstanding(i))}</b></div>`).join("")}function updateMonthFilter(){const select=document.getElementById("monthFilter");const current=select.value||"All";const months=[...new Set(data.invoices.map(i=>monthKey(i.dueDate)).filter(Boolean))].sort();select.innerHTML='<option value="All">All Due Months</option>'+months.map(m=>`<option value="${m}">${monthLabel(m)}</option>`).join("");select.value=months.includes(current)?current:"All"}function renderInvoices(){updateMonthFilter();const q=(document.getElementById("invoiceSearch")?.value||"").toLowerCase(),f=document.getElementById("statusFilter")?.value||"All",mf=document.getElementById("monthFilter")?.value||"All";let rows=data.invoices.filter(i=>i.supplier.toLowerCase().includes(q)||i.invoiceNo.toLowerCase().includes(q));if(f!=="All")rows=rows.filter(i=>f==="Overdue"?isOverdue(i):status(i)===f);if(mf!=="All")rows=rows.filter(i=>monthKey(i.dueDate)===mf);rows.sort((a,b)=>a.dueDate.localeCompare(b.dueDate)||a.supplier.localeCompare(b.supplier));let html='<table><thead><tr><th>Due Date</th><th>Supplier</th><th>Invoice No</th><th>Invoice Date</th><th>Category</th><th>Invoice Amount</th><th>Paid</th><th>Outstanding</th><th>Status</th><th>Action</th></tr></thead><tbody>';if(!rows.length)html+='<tr><td colspan="10" class="muted">No invoices found.</td></tr>';rows.forEach(i=>{html+=`<tr><td>${formatDate(i.dueDate)}</td><td>${i.supplier}</td><td>${i.invoiceNo}</td><td>${formatDate(i.invoiceDate)}</td><td>${i.category||"-"}</td><td>${money(i.amount)}</td><td>${money(paidForInvoice(i.id))}</td><td><b>${money(outstanding(i))}</b></td><td class="${statusClass(i)}">${statusLabel(i)}</td><td><button onclick="openPaymentModal('${i.id}')">Record Payment</button> <button class="secondary" onclick="editInvoice('${i.id}')">Edit</button> <button class="danger" onclick="deleteInvoice('${i.id}')">Delete</button></td></tr>`});html+='</tbody></table>';document.getElementById("invoiceTable").innerHTML=html}function renderPayments(){const q=(document.getElementById("paymentSearch")?.value||"").toLowerCase();let rows=[...data.payments].filter(p=>p.supplier.toLowerCase().includes(q)||p.invoiceNo.toLowerCase().includes(q)||(p.ref||"").toLowerCase().includes(q)).sort((a,b)=>b.date.localeCompare(a.date));let html='<table><thead><tr><th>Payment Date</th><th>Supplier</th><th>Invoice No</th><th>Amount Paid</th><th>Method</th><th>Reference</th><th>Remarks</th><th>Action</th></tr></thead><tbody>';if(!rows.length)html+='<tr><td colspan="8" class="muted">No payments recorded yet.</td></tr>';rows.forEach(p=>html+=`<tr><td>${formatDate(p.date)}</td><td>${p.supplier}</td><td>${p.invoiceNo}</td><td>${money(p.amount)}</td><td>${p.method}</td><td>${p.ref||"-"}</td><td>${p.remarks||"-"}</td><td><button class="danger" onclick="deletePayment('${p.id}')">Delete</button></td></tr>`);html+='</tbody></table>';document.getElementById("paymentsTable").innerHTML=html}function changeMonth(delta){viewMonth+=delta;if(viewMonth<0){viewMonth=11;viewYear--}if(viewMonth>11){viewMonth=0;viewYear++}renderCalendar()}function renderCalendar(){const cal=document.getElementById("calendar");document.getElementById("calendarTitle").textContent=new Date(viewYear,viewMonth,1).toLocaleDateString("en-MY",{month:"long",year:"numeric"});const names=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];cal.innerHTML=names.map(d=>`<div class="day-name">${d}</div>`).join("");const first=new Date(viewYear,viewMonth,1).getDay(),days=new Date(viewYear,viewMonth+1,0).getDate();for(let i=0;i<first;i++)cal.innerHTML+="<div></div>";for(let day=1;day<=days;day++){const iso=`${viewYear}-${String(viewMonth+1).padStart(2,"0")}-${String(day).padStart(2,"0")}`;const invs=data.invoices.filter(i=>i.dueDate===iso&&status(i)!=="Paid");const total=invs.reduce((s,i)=>s+outstanding(i),0);let chips=invs.map(i=>`<div class="payment-chip ${isOverdue(i)?"overdue":status(i)==="Partial"?"partial":""}"><b>${i.supplier}</b><br>${i.invoiceNo}<br>${money(outstanding(i))}</div>`).join("");if(invs.length)chips=`<div class="muted"><b>Total: ${money(total)}</b></div>`+chips;cal.innerHTML+=`<div class="date-cell"><div class="date-num">${day}</div>${chips}</div>`}}function renderSummary(){const map={};data.invoices.forEach(i=>{if(!map[i.supplier])map[i.supplier]={supplier:i.supplier,invoice:0,paid:0,out:0,overdue:0,count:0};map[i.supplier].invoice+=Number(i.amount||0);map[i.supplier].paid+=paidForInvoice(i.id);map[i.supplier].out+=outstanding(i);if(isOverdue(i))map[i.supplier].overdue+=outstanding(i);map[i.supplier].count++});const rows=Object.values(map).sort((a,b)=>b.out-a.out);let html='<table><thead><tr><th>Supplier</th><th>No. of Invoices</th><th>Total Invoice</th><th>Total Paid</th><th>Total Outstanding</th><th>Overdue</th></tr></thead><tbody>';if(!rows.length)html+='<tr><td colspan="6" class="muted">No data yet.</td></tr>';rows.forEach(r=>html+=`<tr><td>${r.supplier}</td><td>${r.count}</td><td>${money(r.invoice)}</td><td>${money(r.paid)}</td><td><b>${money(r.out)}</b></td><td>${money(r.overdue)}</td></tr>`);html+='</tbody></table>';document.getElementById("summaryTable").innerHTML=html}function exportData(){const backup={app:"Supplier Payment App",version:"2.2-installable",exportedAt:new Date().toISOString(),data};const blob=new Blob([JSON.stringify(backup,null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="supplier_payment_app_backup.json";a.click()}function importData(event){const file=event.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=e=>{try{const imported=JSON.parse(e.target.result);let newData=imported.data||imported;if(!newData.invoices||!newData.payments)throw new Error("Invalid file");if(!confirm("This will replace current data in this browser. Continue?"))return;data={invoices:newData.invoices,payments:newData.payments};save();renderAll();alert("Backup imported successfully.")}catch(err){alert("This backup file is not valid. Please import the JSON backup exported from this app.")}};reader.readAsText(file);event.target.value=""}function exportCSV(){const headers=["Due Date","Supplier","Invoice No","Invoice Date","Category","Invoice Amount","Paid","Outstanding","Status","Remarks"];const rows=data.invoices.map(i=>[formatDate(i.dueDate),i.supplier,i.invoiceNo,formatDate(i.invoiceDate),i.category||"",i.amount,paidForInvoice(i.id),outstanding(i),statusLabel(i),i.remarks||""]);const csv=[headers,...rows].map(row=>row.map(v=>`"${String(v??"").replaceAll('"','""')}"`).join(",")).join("\n");const blob=new Blob([csv],{type:"text/csv;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="supplier_payment_invoices.csv";a.click()}function renderAll(){renderDashboard();renderInvoices();renderPayments();renderCalendar();renderSummary()}renderAll();
+if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(console.log));}
 </script>
 </body>
 </html>
