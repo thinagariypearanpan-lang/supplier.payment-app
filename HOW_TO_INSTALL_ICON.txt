@@ -1,0 +1,28 @@
+Supplier Payment App Icon Pack
+
+Upload these files to your GitHub repository root:
+- favicon.png
+- favicon.ico
+- icon-192.png
+- icon-512.png
+- apple-touch-icon.png
+- manifest.json
+
+They must be beside index.html, not inside a folder.
+
+Then edit index.html.
+Find the <head> section and paste these lines before </head>:
+
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#166534">
+
+After saving:
+1. Commit changes.
+2. Wait 1-2 minutes.
+3. Refresh your GitHub Pages app.
+4. On phone, delete the old home screen shortcut.
+5. Open the app link again.
+6. Add to Home Screen again.
